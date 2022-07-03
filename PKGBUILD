@@ -1,5 +1,5 @@
 # Maintainer: DarkXero <info@techxero.com>
-pkgname=xerolinux-scripts
+pkgname=xero-fix-scripts
 _destname1="/"
 pkgver=0.1
 pkgrel=1

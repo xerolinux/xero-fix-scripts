@@ -39,8 +39,7 @@ case $CHOICE in
       sleep 2
       cp -rf /etc/skel/. ~
       sudo pacman -S latte-dock-git --noconfirm --needed
-      sudo rm /etc/sddm.conf.d/kde_settings.conf
-      cd /etc/sddm.conf.d/ && sudo wget https://raw.githubusercontent.com/XeroLinuxDev/xero_iso_dev/main/archiso/airootfs/etc/sddm.conf.d/kde_settings.conf
+      sudo sed -i "s/Current=.*/Current=XeroDark/" /etc/sddm.conf.d/kde_settings.conf
       cd ~ && git clone https://github.com/xerolinux/default-grub.git
       cd ~/default-grub/ && sudo ./install.sh
       rm -rf ~/default-grub
