@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 echo
-echo "#################################"
-echo " Updating Mirrors To Fastest Ones "
-echo "#################################"
+echo "##########################################"
+echo "     Updating Mirrors To Fastest Ones     "
+echo " No Verbose Output, Wait for it to finish "
+echo "##########################################"
 sleep 3
 rate-mirrors --allow-root --disable-comments --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist && sudo pacman -Sy
 echo
