@@ -38,6 +38,7 @@ case $CHOICE in
       echo "#################################"
       sleep 2
       cp -rf /etc/skel/. ~
+      sudo pacman -R lightly-git lightlyshaders-git
       sudo pacman -S latte-dock-git --noconfirm --needed
       sudo sed -i "s/Current=.*/Current=XeroDark/" /etc/sddm.conf.d/kde_settings.conf
       cd ~ && git clone https://github.com/xerolinux/default-grub.git
