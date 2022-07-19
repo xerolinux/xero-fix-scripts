@@ -30,7 +30,7 @@ case $CHOICE in
     1 )
       echo "Creating Backups of ~/.config folder"
       echo "#####################################"
-      cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
+      cp -r ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
       rm -Rf ~/.local/share/plasma/
       sleep 2
       echo "#################################"
