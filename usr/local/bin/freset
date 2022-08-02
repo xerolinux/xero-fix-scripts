@@ -11,14 +11,16 @@ echo "#                         !!! XeroLinux Reset Tool !!!                    
 echo "#                                                                             #"
 echo "#              Having Issues With Messed Up Layout or Settings ?              #"
 echo "#                                                                             #"
-echo "#      This Will Reset To ISO Defaults. Current Settings Will, Be Lost !      #"
+echo "#       This Will Apply XeroLinux Defaults. System will Reboot to Apply       #"
 echo "###############################################################################"
 tput sgr0
 echo
-echo "Are You Sure You Want To Reset ?"
+echo "Please Select Which Defaults you want to apply..."
 echo
-echo "1.  Yes, Please."
-echo "2.  No, Please Don't."
+echo "1.  Apply Latest Defaults."
+echo "2.  Apply Previous Defaults."
+echo
+echo "3.  Exit/Return To Main Menu"
 echo
 echo "Please Select an Option..."
 echo
@@ -30,16 +32,16 @@ case $CHOICE in
     1 )
       echo "Creating Backups of ~/.config folder"
       echo "#####################################"
-      cp -r ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
+      cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
       rm -Rf ~/.local/share/plasma/
       sleep 2
-      echo "#################################"
-      echo "Restoring default settings"
-      echo "#################################"
+      echo "###################################"
+      echo "Applying latest XeroLinux defaults "
+      echo "###################################"
       sleep 2
+      sudo pacman -R kde-rice kvantum --noconfirm
+      sudo pacman -S xero-kde-config lightly-git latte-dock-git --noconfirm --needed
       cp -rf /etc/skel/. ~
-      sudo pacman -R lightly-git lightlyshaders-git
-      sudo pacman -S latte-dock-git --noconfirm --needed
       sudo sed -i "s/Current=.*/Current=XeroDark/" /etc/sddm.conf.d/kde_settings.conf
       cd ~ && git clone https://github.com/xerolinux/default-grub.git
       cd ~/default-grub/ && sudo ./install.sh
@@ -54,11 +56,40 @@ case $CHOICE in
       ;;
 
     2 )
+      echo "Creating Backups of ~/.config folder"
+      echo "#####################################"
+      cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)
+      rm -Rf ~/.local/share/plasma/
+      sleep 2
+      echo "#################################"
+      echo "Restoring default settings"
+      echo "#################################"
+      sleep 2
+      sudo pacman -R xero-kde-config lightly-git --noconfirm
+      sudo pacman -S kde-rice kvantum latte-dock-git kvantum-theme-layan-git --noconfirm --needed
+      cp -rf /etc/skel/. ~
+      sudo sed -i "s/Current=.*/Current=XeroDark/" /etc/sddm.conf.d/kde_settings.conf
+      cd ~ && git clone https://github.com/xerolinux/default-grub.git
+      cd ~/default-grub/ && sudo ./install.sh
+      rm -rf ~/default-grub
+      sleep 2
+      echo "#################################"
+      echo "Done! Rebooting to Apply Settings"
+      echo "#################################"
+      sleep 2
+      reboot
+
+      ;;
+
+    3 )
       echo
       echo "########################################"
       echo "   We did nothing as per your request   "
       echo "########################################"
+            sleep 3
+            clear && sh /usr/local/bin/freset
       echo
+
       ;;
 
     * )
