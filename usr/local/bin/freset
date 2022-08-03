@@ -39,7 +39,7 @@ case $CHOICE in
       echo "Applying latest XeroLinux defaults "
       echo "###################################"
       sleep 2
-      sudo pacman -R kde-rice kvantum --noconfirm
+      sudo pacman -Rdd kde-rice kvantum --noconfirm
       sudo pacman -S xero-kde-config lightly-git latte-dock-git --noconfirm --needed
       cp -rf /etc/skel/. ~
       sudo sed -i "s/Current=.*/Current=XeroDark/" /etc/sddm.conf.d/kde_settings.conf
@@ -65,7 +65,7 @@ case $CHOICE in
       echo "Restoring default settings"
       echo "#################################"
       sleep 2
-      sudo pacman -R xero-kde-config lightly-git --noconfirm
+      sudo pacman -Rdd xero-kde-config lightly-git --noconfirm
       sudo pacman -S kde-rice kvantum latte-dock-git kvantum-theme-layan-git --noconfirm --needed
       cp -rf /etc/skel/. ~
       sudo sed -i "s/Current=.*/Current=XeroDark/" /etc/sddm.conf.d/kde_settings.conf

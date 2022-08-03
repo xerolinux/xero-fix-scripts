@@ -1,7 +1,7 @@
 # Maintainer: DarkXero <info@techxero.com>
 pkgname=xero-fix-scripts
 _destname1="/"
-pkgver=0.1
+pkgver=0.2
 pkgrel=3
 pkgdesc="Some Scripted Tools"
 arch=('any')
