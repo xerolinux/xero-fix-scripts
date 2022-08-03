@@ -11,7 +11,7 @@ echo "#                         !!! XeroLinux Reset Tool !!!                    
 echo "#                                                                             #"
 echo "#              Having Issues With Messed Up Layout or Settings ?              #"
 echo "#                                                                             #"
-echo "#       This Will Apply XeroLinux Defaults. System will Reboot to Apply       #"
+echo "# This Will Apply Stock Defaults. Layout WILL BE RESET, Your Settings UNDONE! #"
 echo "###############################################################################"
 tput sgr0
 echo
@@ -20,7 +20,7 @@ echo
 echo "1.  Apply Latest Defaults."
 echo "2.  Apply Previous Defaults."
 echo
-echo "3.  Exit/Return To Main Menu"
+echo "3.  Exit."
 echo
 echo "Please Select an Option..."
 echo
@@ -84,12 +84,8 @@ case $CHOICE in
     3 )
       echo
       echo "########################################"
-      echo "   We did nothing as per your request   "
+      echo " Ok Sir, You can close this window now  "
       echo "########################################"
-            sleep 3
-            clear && sh /usr/local/bin/freset
-      echo
-
       ;;
 
     * )
