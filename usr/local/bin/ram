@@ -2,10 +2,9 @@
 echo
 echo "##########################################"
 echo "     Updating Mirrors To Fastest Ones     "
-echo " No Verbose Output, Wait for it to finish "
 echo "##########################################"
 echo
-rate-mirrors --allow-root --disable-comments --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist && sudo pacman -Sy
+rate-mirrors --allow-root --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist && sudo pacman -Sy
 echo
 echo "##################################"
 echo " Done ! Updating should go faster "

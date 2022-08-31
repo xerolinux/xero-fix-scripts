@@ -42,8 +42,11 @@ case $CHOICE in
       sudo pacman -Rdd latte-dock-git --noconfirm
       sudo pacman -Rdd kde-rice --noconfirm
       sudo pacman -Rdd kvantum --noconfirm
-      sudo pacman -S xero-kde-config-dev lightly-git plank plank-themes --noconfirm --needed
-      cp -r /etc/skel/. ~
+      sudo pacman -S xero-kde-config lightly-git plank plank-themes --noconfirm
+      sudo rm -Rf /usr/share/custom-apps
+      sudo mkdir /usr/share/custom-apps
+      cd /usr/share/custom-apps && sudo wget https://raw.githubusercontent.com/XeroLinux/xero_iso/main/archiso/airootfs/usr/share/custom-apps/plank-prefs.desktop
+      cp -rf /etc/skel/. ~
       sudo sed -i "s/Current=.*/Current=XeroDark/" /etc/sddm.conf.d/kde_settings.conf
       dconf load /net/launchpad/plank/ < ~/.config/plank.ini
       rm ~/.config/plank.ini
@@ -70,9 +73,12 @@ case $CHOICE in
       echo "Restoring default settings"
       echo "#################################"
       sleep 2
-      sudo pacman -Rdd xero-kde-config-dev plank plank-themes lightly-git --noconfirm
-      sudo pacman -S kde-rice kvantum latte-dock-git kvantum-theme-layan-git --noconfirm --needed
+      sudo pacman -Rdd xero-kde-config --noconfirm
+      sudo pacman -Rdd plank plank-themes --noconfirm
+      sudo pacman -Rdd lightly-git --noconfirm
+      sudo pacman -S kde-rice kvantum latte-dock-git kvantum-theme-layan-git --noconfirm
       rm ~/.config/autostart/plank.desktop
+      sudo rm -Rf /usr/share/custom-apps
       cp -rf /etc/skel/. ~
       sudo sed -i "s/Current=.*/Current=XeroDark/" /etc/sddm.conf.d/kde_settings.conf
       cd ~ && git clone https://github.com/xerolinux/default-grub.git
