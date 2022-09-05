@@ -1,0 +1,23 @@
+#!/bin/bash
+#set -e
+##################################################################################################################
+# Written to be used on 64 bits computers
+# Author 	: 	DarkXero
+# Website 	: 	http://xerolinux.xyz
+##################################################################################################################
+echo
+echo "Removing SDDM & its Dependencies"
+echo "################################"
+sudo pacman -R --noconfirm lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+echo
+sleep 2
+echo "Installing & Enabling LightDM"
+echo "#############################"
+sudo pacman -S sddm sddm-kcm --needed --noconfirm
+sleep 2
+sudo systemctl enable sddm.service -f
+echo "#################################"
+echo "SDDM is now active - rebooting..."
+echo "#################################"
+sleep 6
+reboot
