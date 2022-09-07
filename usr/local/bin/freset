@@ -17,8 +17,8 @@ tput sgr0
 echo
 echo "Please Select Which Defaults you want to apply..."
 echo
-echo "1.  Apply Latest Defaults."
-echo "2.  Apply Previous Defaults."
+echo "1.  Apply Latest Defaults. (Current)"
+echo "2.  Apply Previous Defaults. (Latte + KDE Panel)"
 echo
 echo "3.  Exit"
 echo
@@ -39,18 +39,11 @@ case $CHOICE in
       echo "Applying latest XeroLinux defaults "
       echo "###################################"
       sleep 2
-      sudo pacman -Rdd latte-dock-git --noconfirm
       sudo pacman -Rdd kde-rice --noconfirm
       sudo pacman -Rdd kvantum --noconfirm
-      sudo pacman -S xero-kde-config lightly-git plank plank-themes --noconfirm
-      sudo rm -Rf /usr/share/custom-apps
-      sudo mkdir /usr/share/custom-apps
-      cd /usr/share/custom-apps && sudo wget https://raw.githubusercontent.com/XeroLinux/xero_iso/main/archiso/airootfs/usr/share/custom-apps/plank-prefs.desktop
+      sudo pacman -S xero-kde-config lightly-git --noconfirm
       cp -rf /etc/skel/. ~
       sudo sed -i "s/Current=.*/Current=XeroDark/" /etc/sddm.conf.d/kde_settings.conf
-      dconf load /net/launchpad/plank/ < ~/.config/plank.ini
-      rm ~/.config/plank.ini
-      rm ~/.config/autostart/plconf.desktop
       cd ~ && git clone https://github.com/xerolinux/default-grub.git
       cd ~/default-grub/ && sudo ./install.sh
       rm -rf ~/default-grub
@@ -74,11 +67,8 @@ case $CHOICE in
       echo "#################################"
       sleep 2
       sudo pacman -Rdd xero-kde-config --noconfirm
-      sudo pacman -Rdd plank plank-themes --noconfirm
       sudo pacman -Rdd lightly-git --noconfirm
-      sudo pacman -S kde-rice kvantum latte-dock-git kvantum-theme-layan-git --noconfirm
-      rm ~/.config/autostart/plank.desktop
-      sudo rm -Rf /usr/share/custom-apps
+      sudo pacman -S kde-rice kvantum --noconfirm
       cp -rf /etc/skel/. ~
       sudo sed -i "s/Current=.*/Current=XeroDark/" /etc/sddm.conf.d/kde_settings.conf
       cd ~ && git clone https://github.com/xerolinux/default-grub.git
