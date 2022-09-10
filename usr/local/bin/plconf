@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-dconf load /net/launchpad/plank/ < ~/.config/plank.ini
-rm ~/.config/plank.ini
-rm ~/.config/autostart/plconf.desktop
