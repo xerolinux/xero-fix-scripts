@@ -56,7 +56,7 @@ case $CHOICE in
       echo "##########################################"
       echo "      Grabbing XeroLinux Mirrorlist       "
       echo "##########################################"
-            sleep 3
+        sleep 3
 	    cd /etc/pacman.d/
 	    sudo wget https://raw.githubusercontent.com/xerolinux/xerolinux-mirrorlist/main/etc/pacman.d/xero-mirrorlist
 	    sleep 3
