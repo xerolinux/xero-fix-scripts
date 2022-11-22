@@ -1,0 +1,12 @@
+#!/bin/bash
+echo
+echo "#################################"
+echo "  Applying Flatpak Themes Patch  "
+echo "#################################"
+sleep 3
+sh /usr/local/bin/stylepak install-system
+echo
+echo "#################################"
+echo "      All Done ! Log out/in      "
+echo "#################################"
+sleep 3
