@@ -8,6 +8,6 @@ sudo sed -i "s/User=liveuser/User=/g" /etc/sddm.conf.d/kde_settings.conf
 sleep 3
 echo
 echo "#################################"
-echo "    All Done ! Pllease Reboot    "
+echo "    All Done ! Please Reboot.    "
 echo "#################################"
 sleep 3
