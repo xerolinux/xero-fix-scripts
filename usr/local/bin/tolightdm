@@ -17,7 +17,7 @@ sudo pacman -S --needed --noconfirm lightdm lightdm-gtk-greeter lightdm-gtk-gree
 sleep 2
 sudo rm /etc/lightdm/lightdm-gtk-greeter.conf
 cd /etc/lightdm/ && sudo mv lightdm-gtk-greeter.conf lightdm-gtk-greeter.conf.bak
-cd /etc/lightdm/ && sudo wget https://raw.githubusercontent.com/xerolinux/xero_iso/main/archiso/airootfs/etc/lightdm/lightdm-gtk-greeter.conf
+cd /etc/lightdm/ && sudo wget https://raw.githubusercontent.com/xerolinux/xero_iso/main/Xero/airootfs/etc/lightdm/lightdm-gtk-greeter.conf
 sudo systemctl enable lightdm.service -f
 echo "#################################"
 echo "LightDM is now active - rebooting"
