@@ -1,0 +1,12 @@
+#!/bin/bash
+#set -e
+echo "#################################"
+echo "       Restarting PipeWire       "
+echo "#################################"
+sleep 1.5
+systemctl --user restart pipewire
+systemctl --user restart pipewire-pulse
+echo "#################################"
+echo "        All Done, Try now       "
+echo "#################################"
+sleep 6
