@@ -6,17 +6,17 @@
 # Website 	: 	http://xerolinux.xyz
 ##################################################################################################################
 echo
-echo "Removing LightDM & its Dependencies"
-echo "###################################"
-sudo pacman -R --noconfirm lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+echo "Removing SDDM"
+echo "#############"
+sudo pacman -Rdd --noconfirm sddm
 echo
 sleep 2
-echo "Installing & Enabling SDDM"
-echo "##########################"
-sudo pacman -S sddm sddm-kcm --needed --noconfirm
+echo "Installing & Enabling SDDM-git"
+echo "##############################"
+sudo pacman -S sddm-git --needed --noconfirm
 sleep 2
 sudo systemctl enable sddm.service -f
-echo "############################X#####"
+echo "##################################"
 echo "SDDM is now active - Please Reboot"
-echo "############################X#####"
+echo "##################################"
 sleep 3
