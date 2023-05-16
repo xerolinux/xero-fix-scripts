@@ -2,7 +2,7 @@
 pkgname=xero-fix-scripts
 _destname1="/"
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Some Scripted Tools"
 arch=('any')
 url="https://github.com/XeroLinux"
