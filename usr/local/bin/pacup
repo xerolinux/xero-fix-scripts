@@ -19,7 +19,7 @@ fi
 sleep 3
 # Grab new pacman.conf from GitHub repository
 echo "Downloading new pacman.conf..."
-sudo wget -O /etc/pacman.conf https://raw.githubusercontent.com/xerolinux/xero_iso/main/Xero/airootfs/etc/pacman.conf
+sudo wget -O /etc/pacman.conf https://raw.githubusercontent.com/xerolinux/xero-fixes/main/conf/pacman.conf
 echo
 echo "#######################################################################"
 echo "  All Done ! If all went well you should be able to update no issues.  "
