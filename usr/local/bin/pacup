@@ -1,0 +1,14 @@
+#!/bin/bash
+echo
+echo "##################################"
+echo "       Updating Pacman.conf       "
+echo "##################################"
+sleep 3
+cd /etc/ && sudo mv pacman.conf pacman.conf.old
+cd /etc/ && sudo wget https://raw.githubusercontent.com/xerolinux/xero_iso/main/Xero/airootfs/etc/pacman.conf
+sleep 3
+echo
+echo "##################################"
+echo "       All Done ! Have Fun.       "
+echo "##################################"
+sleep 3
