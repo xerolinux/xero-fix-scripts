@@ -2,13 +2,13 @@
 pkgname=xero-fix-scripts
 _destname1="/"
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Some Scripted Tools"
 arch=('any')
 url="https://github.com/XeroLinux"
 license=('GPL3')
 makedepends=('git')
-depends=()
+depends=('power-profiles-daemon')
 conflicts=('xero-fix-tools-dev')
 provides=("${pkgname}")
 options=(!strip !emptydirs)
