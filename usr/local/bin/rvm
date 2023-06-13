@@ -1,11 +1,10 @@
 #!/bin/bash
 #set -e
 echo "#################################"
-echo "       Restarting PipeWire       "
+echo "   Restarting Libvirtd Service   "
 echo "#################################"
 sleep 1.5
-systemctl --user restart pipewire
-systemctl --user restart pipewire-pulse
+sudo systemctl restart libvirtd
 sleep 1.5
 echo
 echo "#################################"
