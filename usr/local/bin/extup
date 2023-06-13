@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+echo
+echo "#########################################"
+echo "   Updating Gnome Extensions to Latest   "
+echo "#########################################"
+echo
+echo "Removing System Extions if any..."
+sudo pacman -Rns --noconfirm gnome-shell-extension-caffeine &>/dev/null; sudo pacman -Rns --noconfirm gnome-shell-extension-arc-menu &>/dev/null; sudo pacman -Rns --noconfirm gnome-shell-extension-gsconnect &>/dev/null; sudo pacman -Rns --noconfirm gnome-shell-extension-arch-update &>/dev/null; sudo pacman -Rns --noconfirm gnome-shell-extension-appindicator &>/dev/null; sudo pacman -Rns --noconfirm gnome-shell-extension-dash-to-dock &>/dev/null; sudo pacman -Rns --noconfirm gnome-shell-extension-blur-my-shell &>/dev/null; sudo pacman -Rns --noconfirm gnome-shell-extension-burn-my-windows &>/dev/null; sudo pacman -Rns --noconfirm gnome-shell-extension-clipboard-indicator &>/dev/null; sudo pacman -Rns --noconfirm gnome-shell-extension-rounded-window-corners &>/dev/null
+echo
+sleep 2
+echo "Copying/Updating User Extensions to Location"
+sleep 2
+cp -Rf /etc/skel/.local/share/gnome-shell ~/.local/share/
+echo
+sleep 2
+echo "####################################"
+echo " Done ! Reboot to reload extensions "
+echo "####################################"
+sleep 3
+exit

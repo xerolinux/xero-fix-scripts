@@ -1,8 +1,8 @@
 # Maintainer: DarkXero <info@techxero.com>
 pkgname=xero-fix-scripts
 _destname1="/"
-pkgver=1.0
-pkgrel=6
+pkgver=1.1
+pkgrel=1
 pkgdesc="Some Scripted Tools"
 arch=('any')
 url="https://github.com/XeroLinux"

@@ -6,6 +6,8 @@ echo "#################################"
 sleep 1.5
 systemctl --user restart pipewire
 systemctl --user restart pipewire-pulse
+sleep 1.5
+echo
 echo "#################################"
 echo "        All Done, Try now       "
 echo "#################################"
