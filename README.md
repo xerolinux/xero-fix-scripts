@@ -3,6 +3,7 @@
 This is a collection of scripted *fixes* included on every XeroLinux release. Below I explain what each one does. To use them just type the bold part in terminal...
 
 - **extup**      : Update Gnome Extensions
+- **flatfix**    : Apply system theme to flatpaks
 - **keyfix**     : Fix Arch KeyRing
 - **pacup**      : Update Pacman.conf
 - **ram**        : Update Arch Mirrorlist
