@@ -18,7 +18,7 @@ sleep 1.5
 stylepak install-system && stylepak install-user
 echo
 sleep 1.5
-echo "#################################"
-echo "   Done Please Reboot To Apply   "
-echo "#################################"
+echo "##########################################"
+echo "   Done, Flatpaks should be themed now.   "
+echo "##########################################"
 sleep 6
