@@ -24,4 +24,3 @@ echo
 echo "#######################################################################"
 echo "  All Done ! If all went well you should be able to update no issues.  "
 echo "#######################################################################"
-sleep 6

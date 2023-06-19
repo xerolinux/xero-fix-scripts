@@ -12,9 +12,6 @@ echo "Copying/Updating User Extensions to Location"
 sleep 2
 cp -Rf /etc/skel/.local/share/gnome-shell ~/.local/share/
 echo
-sleep 2
 echo "####################################"
 echo " Done ! Reboot to reload extensions "
 echo "####################################"
-sleep 3
-exit
