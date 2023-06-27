@@ -6,14 +6,15 @@
 # Website 	: 	http://xerolinux.xyz
 ##################################################################################################################
 echo
-echo "Removing LightDM & its Dependencies"
-echo "###################################"
-sudo pacman -R --noconfirm lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+echo "Removing Current Display Manager (KDE Only)"
+echo "###########################################"
+sudo pacman -Rdd --noconfirm lightdm &>/dev/null; sudo pacman -Rdd --noconfirm lightdm-gtk-greeter &>/dev/null; sudo pacman -Rdd --noconfirm lightdm-gtk-greeter-settings &>/dev/null; sudo pacman -Rdd --noconfirm gdm &>/dev/null
 echo
 sleep 2
 echo "Installing & Enabling SDDM"
 echo "##########################"
-sudo pacman -S sddm sddm-kcm --needed --noconfirm
+yay -S sddm-git --noconfirm
+sudo pacman -S sddm-kcm --needed --noconfirm
 sleep 2
 sudo systemctl enable sddm.service -f
 echo "############################X#####"

@@ -6,18 +6,15 @@
 # Website 	: 	http://xerolinux.xyz
 ##################################################################################################################
 echo
-echo "Removing SDDM & its Dependencies"
+echo "Removing Current Display Manager"
 echo "################################"
-sudo pacman -R --noconfirm sddm sddm-git sddm-kcm
+sudo pacman -Rdd --noconfirm sddm &>/dev/null; sudo pacman -Rdd --noconfirm sddm-kcm &>/dev/null; sudo pacman -Rdd --noconfirm gdm &>/dev/null
 echo
 sleep 2
 echo "Installing & Enabling LightDM"
 echo "#############################"
 sudo pacman -S --needed --noconfirm lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 sleep 2
-sudo rm /etc/lightdm/lightdm-gtk-greeter.conf
-cd /etc/lightdm/ && sudo mv lightdm-gtk-greeter.conf lightdm-gtk-greeter.conf.bak
-cd /etc/lightdm/ && sudo wget https://raw.githubusercontent.com/xerolinux/xero_iso/main/Xero/airootfs/etc/lightdm/lightdm-gtk-greeter.conf
 sudo systemctl enable lightdm.service -f
 echo "#####################################"
 echo "LightDM is now active - Please Reboot"
