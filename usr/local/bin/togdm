@@ -8,7 +8,7 @@
 echo
 echo "Removing Current Display Manager (Gnome Only)"
 echo "#############################################"
-sudo pacman -Rdd --noconfirm sddm &>/dev/null; sudo pacman -Rdd --noconfirm sddm-kcm &>/dev/null; sudo pacman -Rdd --noconfirm lightdm &>/dev/null; sudo pacman -Rdd --noconfirm lightdm-gtk-greeter &>/dev/null; sudo pacman -Rdd --noconfirm lightdm-gtk-greeter-settings &>/dev/null
+sudo pacman -Rdd --noconfirm sddm &>/dev/null; sudo pacman -Rdd --noconfirm sddm-git &>/dev/null; sudo pacman -Rdd --noconfirm sddm-kcm &>/dev/null; sudo pacman -Rdd --noconfirm lightdm &>/dev/null; sudo pacman -Rdd --noconfirm lightdm-gtk-greeter &>/dev/null; sudo pacman -Rdd --noconfirm lightdm-gtk-greeter-settings &>/dev/null
 echo
 sleep 2
 echo "Installing & Enabling GDM"

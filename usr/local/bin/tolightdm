@@ -8,7 +8,7 @@
 echo
 echo "Removing Current Display Manager"
 echo "################################"
-sudo pacman -Rdd --noconfirm sddm &>/dev/null; sudo pacman -Rdd --noconfirm sddm-kcm &>/dev/null; sudo pacman -Rdd --noconfirm gdm &>/dev/null
+sudo pacman -Rdd --noconfirm sddm &>/dev/null; sudo pacman -Rdd --noconfirm sddm-git &>/dev/null; sudo pacman -Rdd --noconfirm sddm-kcm &>/dev/null; sudo pacman -Rdd --noconfirm gdm &>/dev/null
 echo
 sleep 2
 echo "Installing & Enabling LightDM"
