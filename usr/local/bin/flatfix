@@ -1,22 +1,15 @@
 #!/bin/bash
 #set -e
-echo "#################################"
-echo "      Fixing Flatpak Themes      "
-echo "#################################"
-sleep 1.5
-echo
-echo "Applying Flatpak GTK Overrides"
-echo "##############################"
+echo "#####################################"
+echo "#    Activating Flatpak Theming.    #"
+echo "#####################################"
+sleep 3
 sudo flatpak override --filesystem=$HOME/.themes
 sudo flatpak override --filesystem=xdg-config/gtk-3.0:ro
 sudo flatpak override --filesystem=xdg-config/gtk-4.0:ro
+sleep 2
 echo
-sleep 1.5
-echo "Converting Current Theme to Flatpak"
-echo "###################################"
-sleep 1.5
-stylepak install-system && stylepak install-user
-echo
-echo "##########################################"
-echo "   Done, Flatpaks should be themed now.   "
-echo "##########################################"
+echo "####################################################"
+echo "#       Done, Flatpaks should be themed now.       #"
+echo "####################################################"
+exit
