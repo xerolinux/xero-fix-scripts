@@ -9,7 +9,8 @@ sudo flatpak override --filesystem=xdg-config/gtk-3.0:ro
 sudo flatpak override --filesystem=xdg-config/gtk-4.0:ro
 sleep 2
 echo
-echo "####################################################"
-echo "#       Done, Flatpaks should be themed now.       #"
-echo "####################################################"
+echo "#####################################"
+echo "#     Flatpak Theming Activated     #"
+echo "#####################################"
+sleep 3
 exit
