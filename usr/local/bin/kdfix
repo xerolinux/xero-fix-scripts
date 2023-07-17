@@ -1,0 +1,26 @@
+#!/bin/bash
+#set -e
+echo "##############################################"
+echo "#       Applying the fix now plz wait        #"
+echo "##############################################"
+# Check if mkinitcpio.conf.old file exists in /etc/
+if [ -f "/etc/mkinitcpio.conf.old" ]; then
+echo "Deleting existing mkinitcpio.conf.old file..."
+sudo rm /etc/mkinitcpio.conf.old
+fi
+sleep 3
+# Rename mkinitcpio.conf to mkinitcpio.conf.old
+if [ -f "/etc/mkinitcpio.conf" ]; then
+echo "Renaming mkinitcpio.conf to mkinitcpio.conf.old..."
+sudo mv /etc/mkinitcpio.conf /etc/mkinitcpio.conf.old
+fi
+sleep 3
+# Grab new pacman.conf from GitHub repository
+echo "Downloading new pacman.conf..."
+sudo wget -O /etc/mkinitcpio.conf https://raw.githubusercontent.com/xerolinux/xero-fixes/main/conf/mkinitcpio.conf
+sudo mkinitcpio -P
+sleep 3
+echo
+echo "##############################################"
+echo "#             Done. Please Reboot            #"
+echo "##############################################"
