@@ -1,0 +1,25 @@
+#!/bin/bash
+#set -e
+echo "########################################"
+echo "#           Downgrading Grub           #"
+echo "#                                      #"
+echo "#   Please Select r499 from the list   #"
+echo "# Answer with (n) when asked to ignore #"
+echo "########################################"
+echo
+sleep 3
+sudo downgrade grub
+echo
+sleep 3
+echo "##########################################"
+echo "#          Adding new xhbp repo          #"
+echo "##########################################"
+echo
+sleep 3
+sh /usr/local/bin/pacup
+sleep 3
+echo
+echo "#########################################"
+echo "#      Done Please Reboot To Apply      #"
+echo "#########################################"
+sleep 4
