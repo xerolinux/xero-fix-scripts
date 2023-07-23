@@ -1,0 +1,35 @@
+#!/bin/bash
+#set -e
+echo "########################################"
+echo "   Applying PipeWire Echo-Cancel Fix    "
+echo "########################################"
+sleep 3
+echo
+cd /etc/pipewire/pipewire.conf.d/
+sudo wget https://raw.githubusercontent.com/xerolinux/xero-fixes/main/conf/echo-cancel.conf
+sleep 3
+# Prompt the user to reboot
+tput setaf 4
+read -p "Rebooting is recommended for best results. Reboot now? (y/n): " reboot_response
+tput setaf 0
+echo
+# Check the user's response
+if [[ $reboot_response == "y" || $reboot_response == "yes" ]]; then
+ sudo reboot
+else
+tput setaf 3
+echo "Ok, PipeWire Service Will Be Restarted."
+tput setaf 0
+fi
+systemctl --user restart pipewire
+systemctl --user restart pipewire-pulse
+sleep 3
+echo
+tput setaf 1
+echo "##########################################"
+echo "                 All Done                 "
+echo "        Please Re-launch all apps.        "
+echo "    Select Echo-Cancel Source as Input    "
+echo "##########################################"
+tput setaf 0
+sleep 6
