@@ -5,6 +5,7 @@ echo "#    Activating Flatpak Theming.    #"
 echo "#####################################"
 sleep 3
 sudo flatpak override --filesystem=$HOME/.themes
+sudo flatpak override --env=GTK_THEME=Layan-Dark
 sudo flatpak override --filesystem=xdg-config/gtk-3.0:ro
 sudo flatpak override --filesystem=xdg-config/gtk-4.0:ro
 sleep 2
