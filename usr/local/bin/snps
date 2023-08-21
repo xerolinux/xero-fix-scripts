@@ -3,19 +3,22 @@
 echo "#####################################"
 echo "#      Activating Snap Support      #"
 echo "#   Please Use at your Own Risk !   #"
-echo "#  Install using sudo snap install  #"
 echo "#####################################"
 sleep 3
 sudo pacman -Syy --noconfirm snapd
 sleep 2
 sudo systemctl enable --now snapd.socket
 sleep 2
-sudo snap
+sudo systemctl enable --now snapd.apparmor
 sleep 3
 echo
 echo "######################################"
 echo "#       Snap Support Activated       #"
 echo "#    Please reboot to enable Snap    #"
+echo "#     Do the following to use it     #"
+echo "#  Use terminal to Install Snaps or  #"
+echo "# Install the Snap Store via command #"
+echo "#    sudo snap install snap-store    #"
 echo "######################################"
 sleep 3
 exit
