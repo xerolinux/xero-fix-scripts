@@ -15,6 +15,7 @@ sleep 3
 echo
 echo "######################################"
 echo "#       Snap Support Activated       #"
+echo "#    Please reboot to enable Snap    #"
 echo "######################################"
 sleep 3
 exit
