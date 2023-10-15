@@ -5,8 +5,10 @@ echo "   Applying PipeWire Echo-Cancel Fix    "
 echo "########################################"
 sleep 3
 echo
-cd /etc/pipewire/pipewire.conf.d/
-sudo wget https://raw.githubusercontent.com/xerolinux/xero-fixes/main/conf/echo-cancel.conf
+cd $HOME/.config/
+mkdir pipewire
+cd $HOME/.config/pipewire/
+wget https://raw.githubusercontent.com/xerolinux/xero-fixes/main/conf/pipewire.conf
 sleep 3
 # Prompt the user to reboot
 tput setaf 4
