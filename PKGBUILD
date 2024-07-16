@@ -1,12 +1,13 @@
 # Maintainer: DarkXero <info@techxero.com>
 pkgname=xero-fix-scripts
 _destname1="/"
-pkgver=1.5
-pkgrel=3
+pkgver=1.6
+pkgrel=1
 pkgdesc="Some Scripted Tools"
 arch=('any')
 url="https://github.com/XeroLinux"
 license=('GPL3')
+depends=('rate-mirrors-bin')
 makedepends=('git')
 conflicts=('xero-fix-tools-dev')
 provides=("${pkgname}")
