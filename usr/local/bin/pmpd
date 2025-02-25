@@ -1,0 +1,119 @@
+#!/bin/bash
+
+# Colors for better output
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Function to restore backup
+restore_backup() {
+    if [ -f "/etc/pacman.conf.backup" ]; then
+        echo -e "\n${YELLOW}Restoring from backup...${NC}"
+        if sudo cp /etc/pacman.conf.backup /etc/pacman.conf; then
+            echo
+            echo -e "${GREEN}✓ Successfully restored from backup${NC}"
+            echo
+            echo -e "${YELLOW}Current configuration:${NC} $(grep "ParallelDownloads" /etc/pacman.conf)"
+        else
+            echo
+            echo -e "${RED}Failed to restore from backup${NC}"
+            exit 1
+        fi
+    else
+        echo -e "${RED}No backup file found at /etc/pacman.conf.backup${NC}"
+        exit 1
+    fi
+}
+
+# Function to set parallel downloads
+set_parallel_downloads() {
+    echo -e "${YELLOW}Enter the number of parallel downloads:${NC}"
+    echo
+    read -p "Value (1-20): " PARALLEL_DOWNLOADS
+
+    # Validate input
+    if ! [[ "$PARALLEL_DOWNLOADS" =~ ^[0-9]+$ ]] || [ "$PARALLEL_DOWNLOADS" -eq 0 ] || [ "$PARALLEL_DOWNLOADS" -gt 20 ]; then
+        echo -e "${RED}Error: Please provide a valid number between 1 and 20${NC}"
+        return 1
+    fi
+
+    # Show current setting and prompt for confirmation
+    echo
+    echo -e "${YELLOW}Current configuration:${NC} $(grep "ParallelDownloads" /etc/pacman.conf)"
+    echo -e "${YELLOW}New setting will be:${NC} ParallelDownloads = $PARALLEL_DOWNLOADS"
+    echo
+    read -p "Do you want to proceed? (y/N): " confirm
+    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+        echo
+        echo -e "${BLUE}Operation cancelled${NC}"
+        echo
+        return 1
+    fi
+
+    # Backup the original file
+    echo -e "\n${BLUE}Creating backup of pacman.conf...${NC}"
+    sudo cp /etc/pacman.conf /etc/pacman.conf.backup
+
+    # Use sed to update the ParallelDownloads setting
+    if sudo sed -i "s/^#*ParallelDownloads = .*/ParallelDownloads = ${PARALLEL_DOWNLOADS}/" /etc/pacman.conf; then
+        echo
+        echo -e "${GREEN}✓ Successfully updated ParallelDownloads to ${YELLOW}${PARALLEL_DOWNLOADS}${GREEN} in /etc/pacman.conf${NC}"
+        echo
+        echo -e "${BLUE}Note:${NC} A backup has been created at /etc/pacman.conf.backup"
+        echo
+        echo -e "${YELLOW}New configuration:${NC} $(grep "ParallelDownloads" /etc/pacman.conf)"
+        echo
+    else
+        echo -e "${RED}Failed to update ParallelDownloads setting${NC}"
+        return 1
+    fi
+}
+
+# Check if running with sudo/root permissions
+if [ "$EUID" -ne 0 ]; then 
+    echo -e "${RED}Error: This script needs to be run with sudo privileges${NC}"
+    echo -e "Please run: ${YELLOW}sudo $0${NC}"
+    exit 1
+fi
+
+# Main menu loop
+while true; do
+    clear
+    echo -e "${BLUE}╔════════════════════════════════════════╗${NC}"
+    echo -e "${BLUE}║     Pacman Parallel Downloads Setup    ║${NC}"
+    echo -e "${BLUE}╚════════════════════════════════════════╝${NC}"
+    echo -e "\n${YELLOW}Please select an option:${NC}"
+    echo
+    echo -e "${BLUE}1)${NC} Set new value"
+    echo -e "${BLUE}2)${NC} Restore from backup"
+    echo -e "${BLUE}3)${NC} Return to main menu"
+    echo
+    echo -e "${YELLOW}Current setting:${NC} $(grep "ParallelDownloads" /etc/pacman.conf)"
+    echo
+    read -p "Enter your choice (1-3): " choice
+
+    case $choice in
+        1)
+            echo
+            set_parallel_downloads
+            read -p "Press Enter to continue..."
+            ;;
+        2)
+            echo
+            restore_backup
+            read -p "Press Enter to continue..."
+            ;;
+        3)
+            echo
+            echo -e "${BLUE}Returning to main menu...${NC}"
+            clear && exec "$0"
+            ;;
+        *)
+            echo
+            echo -e "${RED}Invalid choice${NC}"
+            read -p "Press Enter to continue..."
+            ;;
+    esac
+done
