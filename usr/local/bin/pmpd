@@ -65,9 +65,12 @@ set_parallel_downloads() {
         echo
         echo -e "${YELLOW}New configuration:${NC} $(grep "ParallelDownloads" /etc/pacman.conf)"
         echo
+        read -p "Press Enter to continue..."
+        clear && exec xero-cli -m
     else
         echo -e "${RED}Failed to update ParallelDownloads setting${NC}"
-        return 1
+        read -p "Press Enter to continue..."
+        clear && exec xero-cli -m
     fi
 }
 
@@ -98,22 +101,23 @@ while true; do
         1)
             echo
             set_parallel_downloads
-            read -p "Press Enter to continue..."
             ;;
         2)
             echo
             restore_backup
             read -p "Press Enter to continue..."
+            clear && exec xero-cli -m
             ;;
         3)
             echo
             echo -e "${BLUE}Returning to main menu...${NC}"
-            clear && exec "$0"
+            clear && exec xero-cli -m
             ;;
         *)
             echo
             echo -e "${RED}Invalid choice${NC}"
             read -p "Press Enter to continue..."
+            clear && exec xero-cli -m
             ;;
     esac
 done
